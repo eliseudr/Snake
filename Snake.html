@@ -1,0 +1,62 @@
+<html>
+
+    <canvas id="Snake" width="800" height="600">
+
+    <script>
+
+        //Variables used to draw the canvas
+        var canvas = document.getElementById('Snake')
+        var ctx = canvas.getContext('2d')
+
+        //Variables related to the Snake
+        //For the purpose to make it simple It won`t be a vector but in the future it shall be
+        var SnakeWidth = 10;
+        var SnakeHeight = 20;
+        var PositionX = 400; //Inicial positions of the Snake (Middle of the canvas)
+        var PositionY = 300;
+        
+        //Aceleration of the Snake
+        var SpeedX = 5;
+        var SpeedY = 5;
+
+        window.onload = function(){
+            //This Function makes the game update at 30 fps
+            setInterval(function(){
+                Visual();
+                Movement(); 
+            }, 30);
+        }
+
+        function Movement(){
+            //This function will be used to move the Snake around the canvas
+            //PositionX = PositionX + SpeedX;
+            PositionY = PositionY + SpeedY;
+
+
+
+        }
+
+        function Visual (){
+            //Drawing the canvas
+            ctx.fillStyle="black"
+            ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+            //Drawing the original snake
+            ctx.fillStyle="red"
+            ctx.fillRect( PositionX, PositionY, SnakeWidth, SnakeHeight)
+
+            //Randomly drawing the "Apples" on the canvas
+            //This must be changed, Only randomise the generation when the Snake "hit" the circle
+            ctx.fillStyle="White"
+            ctx.beginPath()
+            ctx.arc(Math.random()*785, Math.random()*595, 6, 0, 2 * Math.PI)
+            ctx.fill()
+           
+            
+
+
+        }
+
+    </script>   
+
+</html>
